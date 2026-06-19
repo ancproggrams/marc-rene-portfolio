@@ -1,0 +1,1857 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Portfolio van Marc René over business, IT, continuïteit, digitale projecten, schrijven en muziek."
+  />
+  <title>Marc René · Persoonlijke portfolio</title>
+  <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f6f8fc'/%3E%3Crect x='4' y='4' width='24' height='24' fill='%23111827'/%3E%3Crect x='8' y='8' width='16' height='16' fill='%23dbeafe'/%3E%3Crect x='12' y='12' width='8' height='8' fill='%232563eb'/%3E%3C/svg%3E"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --surface: #ffffff;
+      --fg: #111827;
+      --muted: #64748b;
+      --border: #cbd5e1;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --pastel-blue: #dceeff;
+      --pastel-mint: #def7ec;
+      --pastel-lilac: #ece7ff;
+      --pastel-peach: #ffe4d6;
+      --pastel-yellow: #fef3c7;
+      --nav-bright: #22d3ee;
+      --nav-soft: #ecfeff;
+      --shadow: #b8c2d5;
+      --focus: #2563eb;
+
+      --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+      --fs-h1: clamp(38px, 6vw, 72px);
+      --fs-h2: clamp(30px, 4vw, 48px);
+      --fs-h3: 20px;
+      --fs-lead: clamp(17px, 1.8vw, 20px);
+      --fs-body: 16px;
+      --fs-meta: 13px;
+
+      --gap-xs: 8px;
+      --gap-sm: 12px;
+      --gap-md: 20px;
+      --gap-lg: 32px;
+      --gap-xl: 56px;
+      --gap-2xl: 88px;
+      --container: 1160px;
+      --gutter: clamp(18px, 4vw, 32px);
+      --radius: 8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-body);
+      font-size: var(--fs-body);
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    img, svg, iframe { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+    p { margin: 0; text-wrap: pretty; }
+    h1, h2, h3, h4 {
+      margin: 0;
+      text-wrap: balance;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+    h1, h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.05;
+      text-transform: none;
+    }
+    h3 { font-size: var(--fs-h3); line-height: 1.25; font-weight: 750; }
+
+    /* Atoms */
+    .skip-link {
+      position: fixed;
+      left: 16px;
+      top: 12px;
+      z-index: 100;
+      transform: translateY(-160%);
+      background: var(--fg);
+      color: var(--surface);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .svg-sprite {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+    .pixel-icon {
+      width: 28px;
+      height: 28px;
+      color: var(--accent);
+      fill: currentColor;
+      shape-rendering: crispEdges;
+      flex: 0 0 auto;
+    }
+    .pixel-icon-sm {
+      width: 22px;
+      height: 22px;
+    }
+    .pixel-icon-lg {
+      width: 42px;
+      height: 42px;
+    }
+    .pixel-icon-box {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: color-mix(in oklch, var(--surface) 74%, var(--pastel-blue));
+      box-shadow: 3px 3px 0 var(--shadow);
+    }
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .pixel-corner {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      pointer-events: none;
+      background:
+        linear-gradient(var(--accent), var(--accent)) 0 0 / 12px 3px no-repeat,
+        linear-gradient(var(--accent), var(--accent)) 0 0 / 3px 12px no-repeat;
+      opacity: 0.44;
+    }
+
+    .container {
+      max-width: var(--container);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+    .section {
+      padding-block: clamp(46px, 8vw, var(--gap-2xl));
+    }
+    .section + .section { border-top: 1px solid var(--border); }
+    .stack { display: flex; flex-direction: column; gap: var(--gap-md); }
+    .row { display: flex; align-items: center; gap: var(--gap-md); flex-wrap: wrap; }
+    .row-between {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--gap-md);
+      flex-wrap: wrap;
+    }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-lg); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap-lg); }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap-md); }
+    .grid-2-1 { display: grid; grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr); gap: var(--gap-xl); align-items: start; }
+    .grid-1-2 { display: grid; grid-template-columns: minmax(260px, 1fr) minmax(0, 2fr); gap: var(--gap-xl); align-items: start; }
+
+    .lead {
+      color: var(--muted);
+      font-size: var(--fs-lead);
+      line-height: 1.55;
+      max-width: 62ch;
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .meta {
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: var(--fs-meta);
+      letter-spacing: 0;
+    }
+    .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--nav-soft);
+      border-bottom: 1px solid var(--border);
+    }
+    .topnav-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--gap-md);
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--nav-bright);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      box-shadow: 3px 3px 0 var(--shadow);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      max-width: 100%;
+    }
+    .nav-links a {
+      --nav-cut: 11px;
+      position: relative;
+      isolation: isolate;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--fg);
+      font-size: 14px;
+      font-weight: 750;
+      line-height: 1;
+      border: 0;
+      border-radius: 0;
+      padding: 0 18px;
+      transition: color 0.16s ease, transform 0.12s ease;
+    }
+    .nav-links a::before,
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      clip-path: polygon(
+        var(--nav-cut) 0,
+        calc(100% - var(--nav-cut)) 0,
+        100% 50%,
+        calc(100% - var(--nav-cut)) 100%,
+        var(--nav-cut) 100%,
+        0 50%
+      );
+      transition: background 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+    }
+    .nav-links a::before {
+      inset: 0;
+      z-index: -2;
+      background: var(--fg);
+      filter: drop-shadow(4px 4px 0 var(--shadow));
+    }
+    .nav-links a::after {
+      inset: 3px;
+      z-index: -1;
+      background: var(--surface);
+      box-shadow:
+        inset 0 0 0 2px color-mix(in oklch, var(--accent) 30%, var(--border)),
+        inset 0 -4px 0 color-mix(in oklch, var(--pastel-blue) 70%, var(--border));
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible,
+    .nav-links a[aria-current="page"] {
+      color: var(--fg);
+      transform: translate(-1px, -1px);
+    }
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      background: color-mix(in oklch, var(--nav-bright) 22%, var(--surface));
+      box-shadow:
+        inset 0 0 0 2px var(--accent),
+        inset 0 -4px 0 color-mix(in oklch, var(--nav-bright) 44%, var(--border));
+    }
+    .nav-links a[aria-current="page"]::after {
+      background: var(--nav-bright);
+      box-shadow:
+        inset 0 0 0 2px color-mix(in oklch, var(--fg) 78%, var(--accent)),
+        inset 0 -4px 0 color-mix(in oklch, var(--accent) 42%, var(--nav-bright));
+    }
+    .nav-links a:active {
+      transform: translate(2px, 2px);
+    }
+    .nav-links a:active::before {
+      filter: drop-shadow(1px 1px 0 var(--shadow));
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      font-size: 15px;
+      font-weight: 650;
+      line-height: 1;
+      box-shadow: 4px 4px 0 var(--shadow);
+      transition: transform 0.12s ease, background 0.16s ease, box-shadow 0.16s ease;
+    }
+    .btn:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--shadow); }
+    .btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--shadow); }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--surface);
+      border-color: var(--accent);
+    }
+    .btn-primary:hover { background: color-mix(in oklch, var(--accent) 86%, var(--fg)); }
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--fg);
+      border-color: var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--accent); }
+    .btn-compact {
+      min-height: 36px;
+      padding: 8px 12px;
+      font-size: 14px;
+      box-shadow: 3px 3px 0 var(--shadow);
+    }
+    .btn-ghost {
+      color: var(--fg);
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      padding-inline: 8px;
+    }
+    .btn-ghost:hover { color: var(--accent); box-shadow: none; transform: none; }
+    .btn-arrow::after {
+      content: "->";
+      font-family: var(--font-mono);
+      transition: transform 0.16s ease;
+    }
+    .btn-arrow:hover::after { transform: translateX(2px); }
+
+    .card {
+      background: color-mix(in oklch, var(--surface) 92%, var(--bg));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: clamp(20px, 3vw, 28px);
+      box-shadow: 6px 6px 0 var(--shadow);
+    }
+    .card:hover { transform: translate(-1px, -1px); box-shadow: 7px 7px 0 var(--shadow); }
+    .card-flat { background: transparent; border: 0; padding: 0; }
+    .card-rule {
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--border);
+      border-radius: 0;
+      padding: 24px 0 0;
+    }
+
+    /* Organisms */
+    .hero {
+      position: relative;
+      padding-block: clamp(64px, 10vw, 132px);
+      overflow: hidden;
+    }
+    .hero-pixel-decor {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-pixel-decor span {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      opacity: 0.42;
+      box-shadow:
+        8px 0 0 var(--accent),
+        -8px 0 0 var(--accent),
+        0 8px 0 var(--accent),
+        0 -8px 0 var(--accent);
+    }
+    .hero-pixel-decor span:nth-child(1) { top: 18%; left: 9%; color: var(--accent); }
+    .hero-pixel-decor span:nth-child(2) { top: 24%; right: 12%; background: #10b981; box-shadow: 8px 0 0 #10b981, -8px 0 0 #10b981, 0 8px 0 #10b981, 0 -8px 0 #10b981; }
+    .hero-pixel-decor span:nth-child(3) { bottom: 18%; left: 48%; background: #a78bfa; box-shadow: 8px 0 0 #a78bfa, -8px 0 0 #a78bfa, 0 8px 0 #a78bfa, 0 -8px 0 #a78bfa; }
+    .hero > .container {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      gap: var(--gap-xl);
+      align-items: center;
+    }
+    .hero-copy { display: flex; flex-direction: column; gap: var(--gap-md); }
+    .hero-copy h1 { font-size: var(--fs-h1); max-width: 10ch; }
+    .pixel-hero-title {
+      position: relative;
+      width: min(100%, 760px);
+      aspect-ratio: 1672 / 941;
+      margin-block: -2px 4px;
+      overflow: hidden;
+      isolation: isolate;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #ec008c;
+      box-shadow: 6px 6px 0 var(--shadow);
+    }
+    .pixel-header-image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      image-rendering: auto;
+    }
+    .hero-cta { display: flex; gap: var(--gap-sm); flex-wrap: wrap; margin-top: var(--gap-sm); }
+
+    .studio-board {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 18px;
+      min-height: 520px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 16px;
+      box-shadow: 8px 8px 0 var(--shadow);
+    }
+    .board-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .board-dots { display: flex; gap: 6px; }
+    .board-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: var(--radius);
+      background: var(--pastel-peach);
+      border: 1px solid var(--border);
+    }
+    .board-dot:nth-child(2) { background: var(--pastel-mint); }
+    .board-dot:nth-child(3) { background: var(--pastel-lilac); }
+    .portrait-collage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      min-height: 390px;
+    }
+    .visual-tile {
+      position: relative;
+      color: inherit;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+    }
+    .visual-tile::after,
+    .project-card::after,
+    .hobby-tile::after {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      pointer-events: none;
+      border: 2px solid color-mix(in oklch, var(--accent) 42%, var(--border));
+      border-radius: calc(var(--radius) + 2px);
+      opacity: 0.35;
+      transform: translate(4px, 4px);
+      transition: opacity 0.16s ease, transform 0.16s ease;
+    }
+    .visual-tile:hover::after,
+    .visual-tile:focus-visible::after,
+    .project-card:hover::after,
+    .hobby-tile:hover::after {
+      opacity: 0.95;
+      transform: translate(2px, 2px);
+    }
+    .visual-tile:hover,
+    .visual-tile:focus-visible {
+      border-color: color-mix(in oklch, var(--accent) 58%, var(--border));
+      box-shadow: 3px 3px 0 var(--shadow);
+      transform: translate(-1px, -1px);
+    }
+    .tile-blue { background: var(--pastel-blue); }
+    .tile-mint { background: var(--pastel-mint); }
+    .tile-lilac { background: var(--pastel-lilac); }
+    .tile-peach { background: var(--pastel-peach); }
+    .profile-tile {
+      padding: 0;
+      background: var(--fg);
+      color: var(--surface);
+    }
+    .profile-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 42%;
+      filter: grayscale(100%);
+    }
+    .profile-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 12px 14px;
+      background: color-mix(in oklch, var(--fg) 82%, transparent);
+      border-top: 1px solid color-mix(in oklch, var(--surface) 28%, transparent);
+    }
+    .profile-caption span,
+    .profile-caption strong {
+      color: var(--surface);
+    }
+    .profile-caption strong {
+      font-size: 19px;
+      text-transform: none;
+    }
+    .visual-tile svg {
+      width: 100%;
+      height: 98px;
+      color: color-mix(in oklch, var(--fg) 76%, var(--muted));
+      shape-rendering: crispEdges;
+    }
+    .visual-tile-art {
+      width: 100%;
+      height: 98px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      filter: contrast(1.14);
+    }
+    .visual-tile strong {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .visual-tile strong.music-title {
+      text-transform: none;
+    }
+    .visual-tile span { color: var(--muted); font-size: 13px; }
+    .board-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .route-page { display: none; }
+    .route-page.is-active { display: block; }
+    .page-head {
+      max-width: 760px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-md);
+      margin-bottom: var(--gap-xl);
+    }
+    .page-head h1 { font-size: clamp(34px, 5vw, 62px); }
+    .card h1 { font-size: clamp(20px, 2.2vw, 28px); line-height: 1.42; }
+    .card h2 { font-size: clamp(20px, 2.4vw, 30px); line-height: 1.35; }
+
+    .feature-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--accent);
+      margin-bottom: var(--gap-md);
+    }
+    .feature-mark svg,
+    .hobby-icon svg {
+      width: 22px;
+      height: 22px;
+      shape-rendering: crispEdges;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+    }
+    .feature p { color: var(--muted); font-size: 15px; margin-top: 8px; }
+    .muted-copy { color: var(--muted); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill,
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      border-radius: var(--radius);
+      padding: 5px 10px;
+      font-size: 12px;
+      line-height: 1;
+    }
+    .pill {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+    }
+    .tag {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: var(--gap-lg);
+      padding: 26px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .timeline-item p { color: var(--muted); margin-top: 8px; max-width: 70ch; }
+    .skill-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .skill-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: var(--gap-lg);
+    }
+    .filter-button {
+      min-height: 38px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--muted);
+      padding: 8px 13px;
+    }
+    .filter-button:hover,
+    .filter-button.is-active {
+      color: var(--fg);
+      border-color: var(--accent);
+      background: color-mix(in oklch, var(--accent-soft) 52%, var(--surface));
+    }
+    .project-card {
+      position: relative;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--gap-md);
+    }
+    .project-card::before {
+      content: "";
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      width: 16px;
+      height: 16px;
+      background:
+        linear-gradient(var(--pastel-mint), var(--pastel-mint)) 0 0 / 16px 4px no-repeat,
+        linear-gradient(var(--pastel-mint), var(--pastel-mint)) 12px 0 / 4px 16px no-repeat;
+      opacity: 0.9;
+    }
+    .project-card p { color: var(--muted); }
+    .project-card a { color: var(--accent); font-weight: 700; }
+    .project-card a::after,
+    .substack-state a::after,
+    .contact-card a::after {
+      content: " >";
+      font-family: var(--font-mono);
+      font-weight: 700;
+    }
+    .project-pixel-hero {
+      width: 74px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      margin-bottom: var(--gap-md);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, color-mix(in oklch, var(--pastel-blue) 70%, var(--surface)), var(--surface));
+      box-shadow: 4px 4px 0 var(--shadow);
+    }
+    .project-pixel-hero svg {
+      width: 48px;
+      height: 42px;
+      fill: var(--accent);
+      color: var(--accent);
+      shape-rendering: crispEdges;
+    }
+
+    .hobby-tile {
+      position: relative;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hobby-tile:nth-child(4n + 1) { background: var(--pastel-blue); }
+    .hobby-tile:nth-child(4n + 2) { background: var(--pastel-mint); }
+    .hobby-tile:nth-child(4n + 3) { background: var(--pastel-lilac); }
+    .hobby-tile:nth-child(4n + 4) { background: var(--pastel-peach); }
+    .hobby-tile p { color: var(--muted); }
+    .hobby-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: color-mix(in oklch, var(--surface) 66%, transparent);
+    }
+    .hobby-icon svg { width: 26px; height: 26px; fill: currentColor; }
+
+    .substack-feed-embed {
+      display: grid;
+      gap: var(--gap-md);
+    }
+    .substack-card {
+      position: relative;
+      display: block;
+      color: inherit;
+    }
+    .substack-card::before {
+      content: "";
+      position: absolute;
+      left: -8px;
+      top: 18px;
+      width: 14px;
+      height: 14px;
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transform: rotate(45deg);
+      z-index: 1;
+    }
+    .substack-post {
+      display: grid;
+      grid-template-columns: 146px minmax(0, 1fr);
+      gap: var(--gap-md);
+      min-height: 156px;
+    }
+    .substack-card:hover .card {
+      transform: translate(-1px, -1px);
+      box-shadow: 7px 7px 0 var(--shadow);
+    }
+    .substack-thumbnail,
+    .substack-thumbnail-placeholder {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      object-fit: cover;
+      background: var(--pastel-blue);
+    }
+    .substack-thumbnail-placeholder {
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .substack-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 0;
+    }
+    .substack-title {
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.18;
+    }
+    .substack-date,
+    .substack-desc {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .substack-desc {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+    .substack-state {
+      color: var(--muted);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      background: color-mix(in oklch, var(--surface) 72%, var(--pastel-blue));
+    }
+    .substack-state a {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .contact-card {
+      position: relative;
+    }
+    .contact-card .pixel-corner {
+      right: 18px;
+      top: 18px;
+    }
+    .contact-row {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+    .contact-row .pixel-icon {
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 5px;
+      width: 32px;
+      height: 32px;
+    }
+
+    .spotify-frame {
+      width: 100%;
+      min-height: 352px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 6px 6px 0 var(--shadow);
+    }
+    .music-notes {
+      display: grid;
+      gap: 12px;
+    }
+    .note-row {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .note-row span:first-child {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius);
+      background: var(--pastel-yellow);
+      border: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .contact-card a {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field label { color: var(--muted); font-size: 13px; }
+    .input,
+    .textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--fg);
+      padding: 12px 14px;
+    }
+    .textarea { min-height: 120px; resize: vertical; }
+    .input:focus,
+    .textarea:focus,
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid color-mix(in oklch, var(--focus) 28%, transparent);
+      outline-offset: 3px;
+    }
+
+    .pagefoot {
+      border-top: 1px solid var(--border);
+      padding-block: var(--gap-xl);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .pagefoot a { color: var(--fg); }
+
+    @media (max-width: 980px) {
+      .topnav-inner { align-items: flex-start; flex-direction: column; padding-block: 14px; }
+      .nav-links { width: 100%; justify-content: flex-start; }
+      .hero-split,
+      .grid-2,
+      .grid-3,
+      .grid-4,
+      .grid-2-1,
+      .grid-1-2,
+      .substack-post {
+        grid-template-columns: 1fr;
+      }
+      .studio-board { min-height: auto; }
+      .pixel-hero-title { width: 100%; margin-block: -6px 0; }
+      .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+      .skill-list { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .nav-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+      .nav-links a { width: 100%; --nav-cut: 9px; padding-inline: 10px; font-size: 13px; }
+      .hero-copy h1 { max-width: none; }
+      .pixel-hero-title { width: 100%; margin-block: 0 4px; }
+      .portrait-collage {
+        grid-template-columns: 1fr;
+      }
+      .visual-tile { min-height: 170px; }
+      .substack-thumbnail,
+      .substack-thumbnail-placeholder { max-height: 220px; }
+      .btn { width: 100%; }
+      .hero-cta .btn,
+      .contact-actions .btn { width: auto; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+        animation-duration: 0.001ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Naar inhoud</a>
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="px-doc" viewBox="0 0 24 24">
+      <rect x="5" y="3" width="12" height="2"/><rect x="5" y="5" width="14" height="16"/><rect x="8" y="9" width="8" height="2"/><rect x="8" y="13" width="6" height="2"/><rect x="8" y="17" width="8" height="2"/>
+    </symbol>
+    <symbol id="px-folder" viewBox="0 0 24 24">
+      <rect x="3" y="6" width="7" height="2"/><rect x="3" y="8" width="18" height="12"/><rect x="10" y="8" width="7" height="2"/><rect x="5" y="12" width="14" height="2"/>
+    </symbol>
+    <symbol id="px-heart" viewBox="0 0 24 24">
+      <rect x="6" y="5" width="4" height="4"/><rect x="14" y="5" width="4" height="4"/><rect x="4" y="9" width="16" height="4"/><rect x="6" y="13" width="12" height="4"/><rect x="9" y="17" width="6" height="3"/>
+    </symbol>
+    <symbol id="px-speech" viewBox="0 0 24 24">
+      <rect x="3" y="5" width="18" height="12"/><rect x="7" y="17" width="4" height="3"/><rect x="7" y="9" width="10" height="2"/><rect x="7" y="13" width="7" height="2"/>
+    </symbol>
+    <symbol id="px-mail" viewBox="0 0 24 24">
+      <rect x="3" y="6" width="18" height="14"/><rect x="5" y="8" width="3" height="2"/><rect x="8" y="10" width="3" height="2"/><rect x="11" y="12" width="2" height="2"/><rect x="13" y="10" width="3" height="2"/><rect x="16" y="8" width="3" height="2"/>
+    </symbol>
+    <symbol id="px-phone" viewBox="0 0 24 24">
+      <rect x="7" y="3" width="10" height="18"/><rect x="9" y="5" width="6" height="2"/><rect x="9" y="8" width="6" height="8"/><rect x="11" y="18" width="2" height="2"/>
+    </symbol>
+    <symbol id="px-linkedin" viewBox="0 0 24 24">
+      <rect x="4" y="8" width="4" height="12"/><rect x="4" y="4" width="4" height="3"/><rect x="10" y="8" width="4" height="12"/><rect x="14" y="10" width="4" height="10"/><rect x="16" y="8" width="3" height="4"/>
+    </symbol>
+    <symbol id="px-shield" viewBox="0 0 24 24">
+      <rect x="6" y="4" width="12" height="3"/><rect x="5" y="7" width="14" height="6"/><rect x="7" y="13" width="10" height="4"/><rect x="10" y="17" width="4" height="3"/>
+    </symbol>
+    <symbol id="px-gear" viewBox="0 0 24 24">
+      <rect x="10" y="3" width="4" height="4"/><rect x="10" y="17" width="4" height="4"/><rect x="3" y="10" width="4" height="4"/><rect x="17" y="10" width="4" height="4"/><rect x="8" y="8" width="8" height="8"/><rect x="10" y="10" width="4" height="4"/>
+    </symbol>
+    <symbol id="px-monitor" viewBox="0 0 24 24">
+      <rect x="3" y="5" width="18" height="12"/><rect x="6" y="8" width="12" height="6"/><rect x="10" y="17" width="4" height="2"/><rect x="8" y="19" width="8" height="2"/>
+    </symbol>
+    <symbol id="px-book" viewBox="0 0 24 24">
+      <rect x="4" y="5" width="7" height="14"/><rect x="13" y="5" width="7" height="14"/><rect x="11" y="6" width="2" height="14"/><rect x="6" y="8" width="3" height="2"/><rect x="15" y="8" width="3" height="2"/>
+    </symbol>
+    <symbol id="px-music" viewBox="0 0 24 24">
+      <rect x="8" y="5" width="3" height="12"/><rect x="11" y="4" width="8" height="3"/><rect x="16" y="7" width="3" height="8"/><rect x="5" y="15" width="5" height="4"/><rect x="13" y="14" width="5" height="4"/>
+    </symbol>
+    <symbol id="px-compass" viewBox="0 0 24 24">
+      <rect x="10" y="3" width="4" height="3"/><rect x="6" y="6" width="12" height="12"/><rect x="8" y="8" width="8" height="8"/><rect x="11" y="7" width="2" height="5"/><rect x="11" y="12" width="2" height="5"/>
+    </symbol>
+    <symbol id="px-cup" viewBox="0 0 24 24">
+      <rect x="5" y="8" width="11" height="10"/><rect x="16" y="10" width="4" height="5"/><rect x="7" y="5" width="2" height="2"/><rect x="11" y="4" width="2" height="3"/><rect x="5" y="19" width="13" height="2"/>
+    </symbol>
+    <symbol id="px-spark" viewBox="0 0 24 24">
+      <rect x="11" y="3" width="2" height="6"/><rect x="11" y="15" width="2" height="6"/><rect x="3" y="11" width="6" height="2"/><rect x="15" y="11" width="6" height="2"/><rect x="10" y="10" width="4" height="4"/>
+    </symbol>
+  </svg>
+
+  <header class="topnav" data-od-id="topnav">
+    <div class="container topnav-inner">
+      <a class="logo" href="#home" aria-label="Naar home">
+        <span class="logo-mark">MR</span>
+        <span>Marc René</span>
+      </a>
+      <nav class="nav-links" aria-label="Hoofdnavigatie">
+        <a href="#home">Home</a>
+        <a href="#cv">CV</a>
+        <a href="#projecten">Projecten</a>
+        <a href="#hobbys">Hobby's</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="route-page is-active" id="page-home" data-page="home" data-od-id="home">
+      <div class="section hero">
+        <div class="hero-pixel-decor" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="container hero-split">
+          <div class="hero-copy">
+            <p class="eyebrow">8-bit corporate portfolio</p>
+            <h1 class="sr-only">Marc René</h1>
+            <div class="pixel-hero-title">
+              <img
+                class="pixel-header-image"
+                src="assets/marc-rene-8bit-header.png"
+                alt="8-bit isometrische header met de naam Marc René"
+                width="1672"
+                height="941"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </div>
+            <p class="lead">
+              Ik werk graag waar business, IT en uitvoering elkaar raken:
+              helder krijgen wat nodig is, rust brengen in de aanpak en zorgen
+              dat dienstverlening betrouwbaar blijft.
+            </p>
+          </div>
+
+          <aside class="studio-board" aria-label="8-bit visuele samenvatting van de portfolio">
+            <div class="board-top">
+              <span class="meta">MR-OS · portfolio.exe</span>
+              <div class="board-dots" aria-hidden="true">
+                <span class="board-dot"></span>
+                <span class="board-dot"></span>
+                <span class="board-dot"></span>
+              </div>
+            </div>
+            <div class="portrait-collage">
+              <a class="visual-tile profile-tile" href="#cv" aria-label="Open de CV-pagina">
+                <img src="assets/marc-rene-profile.png" alt="Portretfoto van Marc René" width="512" height="512" />
+                <div class="profile-caption">
+                  <span>LEVEL 01 · PROFILE</span>
+                  <strong>Marc René</strong>
+                </div>
+              </a>
+              <a class="visual-tile tile-mint" href="#projecten" aria-label="Open de projectenpagina">
+                <span>LEVEL 02 · BUILD</span>
+                <svg viewBox="0 0 180 110" fill="currentColor" aria-hidden="true">
+                  <rect x="22" y="24" width="24" height="24"/>
+                  <rect x="50" y="24" width="24" height="24"/>
+                  <rect x="78" y="24" width="24" height="24"/>
+                  <rect x="50" y="52" width="24" height="24"/>
+                  <rect x="78" y="52" width="24" height="24"/>
+                  <rect x="106" y="52" width="24" height="24"/>
+                  <rect x="134" y="52" width="24" height="24"/>
+                </svg>
+                <strong>PROJECTS</strong>
+              </a>
+              <a class="visual-tile tile-lilac" href="#blog" aria-label="Open de blogpagina">
+                <span>LEVEL 03 · BLOG</span>
+                <svg viewBox="0 0 180 110" fill="currentColor" aria-hidden="true">
+                  <rect x="42" y="16" width="76" height="8"/>
+                  <rect x="42" y="24" width="8" height="68"/>
+                  <rect x="126" y="40" width="8" height="52"/>
+                  <rect x="42" y="92" width="92" height="8"/>
+                  <rect x="118" y="24" width="8" height="8"/>
+                  <rect x="126" y="32" width="8" height="8"/>
+                  <rect x="62" y="56" width="58" height="6"/>
+                  <rect x="62" y="72" width="42" height="6"/>
+                </svg>
+                <strong>BLOG</strong>
+              </a>
+              <a class="visual-tile tile-peach" href="#spotify" aria-label="Open de Spotify-pagina">
+                <span>LEVEL 04 · SOUND</span>
+                <img
+                  class="visual-tile-art"
+                  src="assets/marcsmusic-waveform.png"
+                  alt=""
+                  width="1536"
+                  height="1024"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <strong class="music-title">marcsmusic</strong>
+              </a>
+            </div>
+            <div class="board-caption">
+              <span>8-bit buitenkant, serieuze inhoud.</span>
+              <span class="num">2026</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="container stack" style="gap: 52px;">
+          <div class="page-head" style="margin-bottom: 0;">
+            <p class="eyebrow">In het kort</p>
+            <h2>Ik verbind business, IT en mensen zodat plannen echt gaan werken.</h2>
+            <p class="lead">
+              Dit is mijn digitale thuisbasis: mijn CV, projecten, blog en muziek
+              op één plek. Geen standaard profiel, maar een beeld van hoe ik denk,
+              bouw en samenwerk.
+            </p>
+          </div>
+          <div class="grid-3">
+            <article class="feature card-flat">
+              <div class="feature-mark" aria-hidden="true">
+                <svg class="pixel-icon" aria-hidden="true"><use href="#px-doc"/></svg>
+              </div>
+              <h3>Loopbaan met richting</h3>
+              <p>Mijn ervaring ligt op het snijvlak van consultancy, service delivery en continuïteit. Ik breng structuur zonder de praktijk uit het oog te verliezen.</p>
+            </article>
+            <article class="feature card-flat">
+              <div class="feature-mark" aria-hidden="true">
+                <svg class="pixel-icon" aria-hidden="true"><use href="#px-folder"/></svg>
+              </div>
+              <h3>Projecten die iets oplossen</h3>
+              <p>Opdrchtn.com, eyay.online en bousjans.paris laten zien hoe ik ideeën vertaal naar werkende digitale concepten.</p>
+            </article>
+            <article class="feature card-flat">
+              <div class="feature-mark" aria-hidden="true">
+                <svg class="pixel-icon" aria-hidden="true"><use href="#px-heart"/></svg>
+              </div>
+              <h3>Ook de mens erachter</h3>
+              <p>Schrijven, muziek en persoonlijke interesses maken mijn profiel completer. Ze laten zien waar mijn aandacht naartoe gaat als ik niet in een project zit.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="route-page" id="page-cv" data-page="cv" data-od-id="cv">
+      <div class="section">
+        <div class="container">
+          <div class="page-head">
+            <p class="eyebrow">Carrière · CV</p>
+            <h1>Een loopbaan gebouwd rond betrouwbaarheid, overzicht en uitvoering.</h1>
+            <p class="lead">
+              Ik help organisaties grip krijgen op processen, teams en kritieke
+              dienstverlening. Mijn kracht zit in de combinatie van analyse,
+              stakeholdergevoel en genoeg technische bagage om door te vragen.
+            </p>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="assets/Marc_Rene_Principal_Consultant_Business_Consultant.pdf" download>Download CV</a>
+              <a class="btn btn-secondary" href="#contact">Neem contact op</a>
+            </div>
+          </div>
+
+          <div class="grid-2-1">
+            <div class="stack" style="gap: 48px;">
+              <section aria-labelledby="ervaring-title">
+                <div class="row-between" style="margin-bottom: 18px;">
+                  <h2 class="section-heading" id="ervaring-title"><span class="pixel-icon-box" aria-hidden="true"><svg class="pixel-icon pixel-icon-sm"><use href="#px-monitor"/></svg></span>Werkervaring</h2>
+                  <span class="meta">Uit CV juni 2026</span>
+                </div>
+                <div class="timeline">
+                  <article class="timeline-item">
+                    <span class="meta">01-2026 - heden</span>
+                    <div>
+                      <h3>Senior Team Lead Balans & Markets · TenneT</h3>
+                      <p>Stuurt een team van 13 medewerkers aan rond functioneel beheer van bedrijfskritische applicaties voor 24/7 netoperatie. De nadruk ligt op operationele rust, duidelijke keuzes en vertegenwoordiging richting MT.</p>
+                    </div>
+                  </article>
+                  <article class="timeline-item">
+                    <span class="meta">08-2025 - heden</span>
+                    <div>
+                      <h3>Customer Success Manager · Team Rockstars IT</h3>
+                      <p>Vertaalt klantvragen naar concrete verbeteringen in IT-prestaties, processen en samenwerking. Afhankelijk van de situatie beweegt de rol tussen programma-, project- en deliverymanagement.</p>
+                    </div>
+                  </article>
+                  <article class="timeline-item">
+                    <span class="meta">10-2025</span>
+                    <div>
+                      <h3>Senior Architect · GGD</h3>
+                      <p>Analyseerde de bestaande architectuur, sprak met stakeholders en werkte een doelbeeld uit waarin organisatiecontext, processen, informatiestromen en systemen weer logisch met elkaar verbonden zijn.</p>
+                    </div>
+                  </article>
+                  <article class="timeline-item">
+                    <span class="meta">02-2024 - 12-2024</span>
+                    <div>
+                      <h3>Senior Business & IT Continuity Consultant · Kadaster</h3>
+                      <p>Bouwde mee aan BCM-beleid en een werkbaar raamwerk. Ketenprocessen, herstelmechanismen en directieadvies kwamen samen in één verhaal over weerbaarheid, continuïteit en compliance.</p>
+                    </div>
+                  </article>
+                  <article class="timeline-item">
+                    <span class="meta">02-2024 - 12-2024</span>
+                    <div>
+                      <h3>Service Delivery Manager · FIOD</h3>
+                      <p>Versterkte relatiemanagement, portfolio- en ketensturing en procesbesturing. Doel: IT-dienstverlening die betrouwbaar, veilig en aantoonbaar op orde is.</p>
+                    </div>
+                  </article>
+                  <article class="timeline-item">
+                    <span class="meta">06-2024 - 12-2024</span>
+                    <div>
+                      <h3>ServiceNow SME / Business & IT Reliability Consultant · Ministerie van Defensie</h3>
+                      <p>Hielp Defensie-teams landen in ServiceNow binnen GRITT. Ontwierp GAP-analysis dashboards, voerde CMDB-analyses uit en bracht meer scherpte aan in datagovernance.</p>
+                    </div>
+                  </article>
+                  <article class="timeline-item">
+                    <span class="meta">10-2023 - 02-2024</span>
+                    <div>
+                      <h3>Senior Service Delivery Manager · SSC-ICT</h3>
+                      <p>Bewaakte prestaties, SLA's en KPI's over rijksdiensten heen. Stuurde leveranciers aan en verbeterde ITIL-processen rond incident, problem en change management.</p>
+                    </div>
+                  </article>
+                  <article class="timeline-item">
+                    <span class="meta">09-2023 - 12-2023</span>
+                    <div>
+                      <h3>Business & IT Continuity Manager / Reliability Consultant · EDSN</h3>
+                      <p>Ontwikkelde een BCM-framework, crisis- en herstelstrategie en continuïteitsafspraken voor kritieke energiedata- en marktprocessen.</p>
+                    </div>
+                  </article>
+                  <article class="timeline-item">
+                    <span class="meta">12-2021 - 06-2023</span>
+                    <div>
+                      <h3>Service Delivery Manager & Business Analist · Kyndryl</h3>
+                      <p>Stuurde een multidisciplinair team van 18 specialisten aan en bewaakte dienstverlening, continuïteit en kwaliteit tijdens de transitie van meer dan 800 applicaties.</p>
+                    </div>
+                  </article>
+                </div>
+              </section>
+
+              <section aria-labelledby="opleiding-title">
+                <div class="row-between" style="margin-bottom: 18px;">
+                  <h2 class="section-heading" id="opleiding-title"><span class="pixel-icon-box" aria-hidden="true"><svg class="pixel-icon pixel-icon-sm"><use href="#px-shield"/></svg></span>Opleiding en certificaten</h2>
+                </div>
+                <div class="timeline">
+                  <article class="timeline-item">
+                    <span class="meta">2001 - 2005</span>
+                    <div>
+                      <h3>MBO Technische Informatica · Zadkine</h3>
+                      <p>De technische basis onder mijn werk: systeembeheer, infrastructuur, applicatiebeheer en IT-dienstverlening.</p>
+                    </div>
+                  </article>
+                  <article class="timeline-item">
+                    <span class="meta">Certificaten</span>
+                    <div>
+                      <h3>ITIL V4, PSM I, PRINCE2 en Microsoft</h3>
+                      <p>Onder meer ITIL V4 Specialist Create, Deliver and Support, ITIL V4 Foundation, Professional Scrum Master I, PRINCE2 Foundation, MCSE, MCSA, MTA en Microsoft EDA.</p>
+                    </div>
+                  </article>
+                  <article class="timeline-item">
+                    <span class="meta">Cursussen</span>
+                    <div>
+                      <h3>BPMN, ELK Stack, BMC TrueSight en Cisco</h3>
+                      <p>Aangevuld met BPMN Masterclass, ELK Stack Fundamentals, BMC TrueSight Operations Management en Cisco QSMB.</p>
+                    </div>
+                  </article>
+                </div>
+              </section>
+
+              <section aria-labelledby="ervaring-eerder-title">
+                <div class="row-between" style="margin-bottom: 18px;">
+                  <h2 class="section-heading" id="ervaring-eerder-title"><span class="pixel-icon-box" aria-hidden="true"><svg class="pixel-icon pixel-icon-sm"><use href="#px-gear"/></svg></span>Eerdere rollen</h2>
+                </div>
+                <div class="grid-2">
+                  <article class="card stack">
+                    <svg class="pixel-icon pixel-icon-lg" aria-hidden="true"><use href="#px-monitor"/></svg>
+                    <h3>Operationele en delivery-ervaring</h3>
+                    <p class="muted-copy">Ervaring opgedaan in uiteenlopende omgevingen, van publieke dienstverlening tot enterprise IT: KLM, DICTU, Groen Collect, Boost Foundation, Veolia, Yara, MBO Amersfoort, Zorginstituut Nederland, OGD en Microsoft.</p>
+                  </article>
+                  <article class="card stack">
+                    <svg class="pixel-icon pixel-icon-lg" aria-hidden="true"><use href="#px-gear"/></svg>
+                    <h3>Kennis en tooling</h3>
+                    <div class="pill-row">
+                      <span class="tag">Linux</span>
+                      <span class="tag">Windows</span>
+                      <span class="tag">Azure</span>
+                      <span class="tag">VMware</span>
+                      <span class="tag">ServiceNow</span>
+                      <span class="tag">Jira</span>
+                      <span class="tag">BMC</span>
+                      <span class="tag">Draw.io</span>
+                      <span class="tag">SAFe</span>
+                      <span class="tag">Kanban</span>
+                    </div>
+                  </article>
+                </div>
+              </section>
+            </div>
+
+            <aside class="card stack" aria-labelledby="skills-title">
+              <div>
+                <p class="eyebrow">Vaardigheden</p>
+                <h2 class="section-heading" id="skills-title"><span class="pixel-icon-box" aria-hidden="true"><svg class="pixel-icon pixel-icon-sm"><use href="#px-spark"/></svg></span>Sterke punten</h2>
+              </div>
+              <p class="lead" style="font-size: 16px;">Ik ben op mijn best als er veel beweegt: belangen, techniek, processen en mensen. Dan help ik het gesprek concreet maken en de volgende stap bepalen.</p>
+              <div class="skill-list" aria-label="Vaardigheden">
+                <div class="skill-item"><span>Delivery management</span><span class="num">15 jaar</span></div>
+                <div class="skill-item"><span>ITIL</span><span class="num">15 jaar</span></div>
+                <div class="skill-item"><span>Microsoft admin</span><span class="num">15 jaar</span></div>
+                <div class="skill-item"><span>Scrum</span><span class="num">10 jaar</span></div>
+                <div class="skill-item"><span>Business & IT continuity</span><span class="num">5 jaar</span></div>
+                <div class="skill-item"><span>Team lead</span><span class="num">5 jaar</span></div>
+                <div class="skill-item"><span>Projectmanagement</span><span class="num">5 jaar</span></div>
+              </div>
+              <div class="card-rule">
+                <p class="eyebrow">Talen</p>
+                <p>Nederlands op moedertaalniveau. Engels vloeiend in gesprekken, documentatie en internationale teams.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="route-page" id="page-projecten" data-page="projecten" data-od-id="projecten">
+      <div class="section">
+        <div class="container">
+          <div class="page-head">
+            <p class="eyebrow">Projecten</p>
+            <h1>Projecten waarin ideeën niet blijven hangen in plannen.</h1>
+            <p class="lead">
+              Ik bouw graag aan concepten die je kunt openen, testen en verder
+              scherpen. Deze selectie laat zien waar mijn nieuwsgierigheid,
+              ondernemerschap en praktische aanpak samenkomen.
+            </p>
+          </div>
+          <div class="filter-bar" aria-label="Projectfilters"></div>
+          <div class="grid-3" id="project-grid" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="route-page" id="page-hobbys" data-page="hobbys" data-od-id="hobbys">
+      <div class="section">
+        <div class="container">
+          <div class="page-head">
+            <p class="eyebrow">Hobby's</p>
+            <h1>Wat mijn blik scherp houdt buiten opdrachten om.</h1>
+            <p class="lead">
+              Goed werk ontstaat niet alleen achter een laptop. Lezen, muziek,
+              bewegen en cultuur geven mij nieuwe taal, energie en perspectief.
+            </p>
+          </div>
+          <div class="grid-3">
+            <article class="card hobby-tile">
+              <div class="hobby-icon" aria-hidden="true">
+                <svg class="pixel-icon" aria-hidden="true"><use href="#px-book"/></svg>
+              </div>
+              <div>
+                <h3>Lezen en notities</h3>
+                <p>Boeken, essays en losse ideeën die later vaak terugkomen in gesprekken, plannen of blogstukken.</p>
+              </div>
+            </article>
+            <article class="card hobby-tile">
+              <div class="hobby-icon" aria-hidden="true">
+                <svg class="pixel-icon" aria-hidden="true"><use href="#px-music"/></svg>
+              </div>
+              <div>
+                <h3>Muziek ontdekken</h3>
+                <p>Playlists als momentopname: focus, stemming, onderweg zijn en tracks die precies op het juiste moment blijven hangen.</p>
+                <a class="btn btn-secondary btn-compact" href="#spotify" style="margin-top: 18px;">Open Spotify</a>
+              </div>
+            </article>
+            <article class="card hobby-tile">
+              <div class="hobby-icon" aria-hidden="true">
+                <svg class="pixel-icon" aria-hidden="true"><use href="#px-gear"/></svg>
+              </div>
+              <div>
+                <h3>Kleine experimenten</h3>
+                <p>Nieuwe tools testen, kleine workflows bouwen en uitzoeken waar technologie het werk net menselijker of slimmer maakt.</p>
+              </div>
+            </article>
+            <article class="card hobby-tile">
+              <div class="hobby-icon" aria-hidden="true">
+                <svg class="pixel-icon" aria-hidden="true"><use href="#px-compass"/></svg>
+              </div>
+              <div>
+                <h3>Bewegen en buiten zijn</h3>
+                <p>Ruimte maken in mijn hoofd door te wandelen, sporten of simpelweg even ergens anders te kijken.</p>
+              </div>
+            </article>
+            <article class="card hobby-tile">
+              <div class="hobby-icon" aria-hidden="true">
+                <svg class="pixel-icon" aria-hidden="true"><use href="#px-monitor"/></svg>
+              </div>
+              <div>
+                <h3>Design en interfaces</h3>
+                <p>Ik let snel op details in producten: ritme, typografie, interacties en of iets logisch aanvoelt.</p>
+              </div>
+            </article>
+            <article class="card hobby-tile">
+              <div class="hobby-icon" aria-hidden="true">
+                <svg class="pixel-icon" aria-hidden="true"><use href="#px-cup"/></svg>
+              </div>
+              <div>
+                <h3>Plekken en cultuur</h3>
+                <p>Nieuwe steden, goede koffie, musea en gesprekken die later onverwacht terugkomen in werk of ideeën.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="route-page" id="page-blog" data-page="blog" data-od-id="blog">
+      <div class="section">
+        <div class="container">
+          <div class="grid-1-2">
+            <aside class="card stack">
+              <svg class="pixel-icon pixel-icon-lg" aria-hidden="true"><use href="#px-speech"/></svg>
+              <p class="eyebrow">Blog</p>
+              <h1>Gedachten die ik liever uitschrijf dan laat rondzingen.</h1>
+              <p class="lead">
+                Ik schrijf over businesscontinuïteit, service delivery,
+                technologie en de menselijke kant van systemen. Vaak begint het
+                met iets dat ik in de praktijk blijf tegenkomen.
+              </p>
+              <a class="btn btn-primary" href="https://marcren1.substack.com/" target="_blank" rel="noreferrer">Lees mijn blog</a>
+            </aside>
+            <div>
+              <div class="row-between" style="margin-bottom: 28px;">
+                <h2>Recente stukken</h2>
+                <a class="btn btn-ghost btn-arrow" href="https://marcren1.substack.com/" target="_blank" rel="noreferrer">Volg mijn blog</a>
+              </div>
+              <div
+                class="substack-feed-embed"
+                id="substack-feed"
+                data-substack-url="https://marcren1.substack.com"
+                data-posts="3"
+                data-show-images="true"
+                aria-live="polite"
+              >
+                <div class="substack-state">Blogposts laden...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="route-page" id="page-spotify" data-page="spotify" data-od-id="spotify">
+      <div class="section">
+        <div class="container">
+          <div class="page-head">
+            <p class="eyebrow">Spotify</p>
+            <h1>marcsmusic: de soundtrack naast het werk.</h1>
+            <p class="lead">
+              Muziek helpt mij schakelen: focussen, landen na een drukke dag of
+              juist energie vinden voor een nieuw idee. Deze pagina houdt dat
+              bewust simpel.
+            </p>
+          </div>
+
+          <div class="grid-2">
+            <iframe
+              class="spotify-frame"
+              data-testid="embed-iframe"
+              title="Spotify embed"
+              src="https://open.spotify.com/embed/artist/4w5WzE3kOhQPE4llLOKVas?utm_source=generator&si=a1ad370c22b64123"
+              width="100%"
+              height="352"
+              frameborder="0"
+              loading="lazy"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            ></iframe>
+            <aside class="card stack">
+              <p class="eyebrow">Waarom Spotify</p>
+              <h2>Muziek zegt vaak sneller iets dan een bio.</h2>
+              <p class="lead">
+                Sommige tracks horen bij diep werk, andere bij reizen, lezen of
+                gewoon even opnieuw beginnen. Samen geven ze een persoonlijker
+                beeld dan alleen rollen en functietitels.
+              </p>
+              <div class="music-notes">
+                <div class="note-row"><span>01</span><p>Voor focus: ritme genoeg om door te werken, rustig genoeg om niet af te leiden.</p></div>
+                <div class="note-row"><span>02</span><p>Voor reflectie: muziek die goed past bij lezen, schrijven en wandelen.</p></div>
+                <div class="note-row"><span>03</span><p>Voor energie: tracks die een project of idee net wat meer vaart geven.</p></div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="route-page" id="page-contact" data-page="contact" data-od-id="contact">
+      <div class="section">
+        <div class="container">
+          <div class="page-head">
+            <p class="eyebrow">Contact</p>
+            <h1>Heb je een vraag, project of idee? Dan hoor ik het graag.</h1>
+            <p class="lead">
+              Stuur vooral iets concreets: een vraagstuk, opdracht, samenwerking
+              of project waar je scherpte op zoekt. Ik reageer het liefst op
+              gesprekken waar we snel tot de kern kunnen komen.
+            </p>
+          </div>
+
+          <div class="grid-2">
+            <div class="card contact-card stack">
+              <span class="pixel-corner" aria-hidden="true"></span>
+              <h2>Links</h2>
+              <p class="contact-row"><svg class="pixel-icon" aria-hidden="true"><use href="#px-mail"/></svg><span>E-mail: <a href="mailto:marc@adviesnconsultancy.nl">marc@adviesnconsultancy.nl</a></span></p>
+              <p class="contact-row"><svg class="pixel-icon" aria-hidden="true"><use href="#px-phone"/></svg><span>Telefoon: <a href="tel:+31622675520">+31 6 2267 5520</a></span></p>
+              <p class="contact-row"><svg class="pixel-icon" aria-hidden="true"><use href="#px-linkedin"/></svg><span>LinkedIn: <a href="https://www.linkedin.com/in/marcrene/" target="_blank" rel="noreferrer">linkedin.com/in/marcrene</a></span></p>
+              <p class="contact-row"><svg class="pixel-icon" aria-hidden="true"><use href="#px-speech"/></svg><span>Blog: <a href="https://marcren1.substack.com/" target="_blank" rel="noreferrer">marcren1.substack.com</a></span></p>
+            </div>
+            <form class="card stack" action="mailto:marc@adviesnconsultancy.nl" method="post" enctype="text/plain">
+              <h2>Stuur mij een bericht</h2>
+              <div class="field">
+                <label for="name">Naam</label>
+                <input class="input" id="name" name="name" autocomplete="name" />
+              </div>
+              <div class="field">
+                <label for="email">E-mail</label>
+                <input class="input" id="email" name="email" type="email" autocomplete="email" />
+              </div>
+              <div class="field">
+                <label for="message">Bericht</label>
+                <textarea class="textarea" id="message" name="message"></textarea>
+              </div>
+              <div class="contact-actions">
+                <button class="btn btn-primary" type="submit">Verstuur bericht</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pagefoot" data-od-id="footer">
+    <div class="container row-between">
+      <span>© <span id="year"></span> Marc René · Persoonlijke portfolio</span>
+      <span class="meta">Business, IT en een beetje 8-bit eigenwijsheid.</span>
+    </div>
+  </footer>
+
+  <script>
+    const siteData = {
+      projects: [
+        {
+          title: "Opdrchtn.com",
+          category: "Platform",
+          description: "Een platformidee rond opdrachten, intake en matching. Gebouwd vanuit de vraag: hoe maak je vraag en uitvoering sneller duidelijk voor beide kanten?",
+          tags: ["Platform", "Matching", "Product"],
+          icon: "platform",
+          link: "https://opdrchtn.com",
+          cta: "Bekijk Opdrchtn"
+        },
+        {
+          title: "eyay.online",
+          category: "Web",
+          description: "Een webproject waarin product, content en experiment bij elkaar komen. Een plek om ideeën zichtbaar te maken en door te ontwikkelen.",
+          tags: ["Web", "Brand", "Content"],
+          icon: "web",
+          link: "https://eyay.online/",
+          cta: "Bekijk eyay.online"
+        },
+        {
+          title: "bousjans.paris",
+          category: "E-commerce",
+          description: "Een Shopify-modewebsite waarin collectie, stijl en merkgevoel samen moeten werken. Visueel rustig, commercieel helder en makkelijk door te bouwen.",
+          tags: ["Shopify", "Mode", "Brand"],
+          icon: "shop",
+          link: "https://bousjans.paris/",
+          cta: "Bekijk bousjans.paris"
+        }
+      ]
+    };
+
+    const pageTitles = {
+      home: "Marc René · Persoonlijke portfolio",
+      cv: "CV · Marc René",
+      projecten: "Projecten · Marc René",
+      hobbys: "Hobby's · Marc René",
+      blog: "Blog · Marc René",
+      spotify: "Spotify · Marc René",
+      contact: "Contact · Marc René"
+    };
+
+    const projectGrid = document.querySelector("#project-grid");
+    const filterBar = document.querySelector(".filter-bar");
+    const navLinks = Array.from(document.querySelectorAll(".nav-links a"));
+    const pages = Array.from(document.querySelectorAll("[data-page]"));
+    const year = document.querySelector("#year");
+
+    function iconForProject(icon) {
+      const icons = {
+        platform: '<rect x="5" y="10" width="16" height="4" fill="#93c5fd"/><rect x="5" y="14" width="16" height="9" fill="#2563eb"/><rect x="21" y="12" width="5" height="9" fill="#1d4ed8"/><rect x="8" y="16" width="3" height="3" fill="#dbeafe"/><rect x="13" y="16" width="3" height="3" fill="#dbeafe"/><rect x="18" y="16" width="3" height="3" fill="#dbeafe"/><rect x="10" y="6" width="12" height="4" fill="#10b981"/><rect x="22" y="8" width="4" height="4" fill="#059669"/>',
+        web: '<rect x="4" y="8" width="19" height="13" fill="#2563eb"/><rect x="7" y="5" width="19" height="13" fill="#93c5fd"/><rect x="9" y="7" width="15" height="3" fill="#2563eb"/><rect x="9" y="12" width="6" height="4" fill="#ffffff"/><rect x="17" y="12" width="6" height="4" fill="#ffffff"/><rect x="12" y="21" width="8" height="3" fill="#1d4ed8"/><rect x="10" y="24" width="12" height="3" fill="#64748b"/>',
+        shop: '<rect x="6" y="11" width="18" height="13" fill="#2563eb"/><rect x="8" y="7" width="14" height="5" fill="#93c5fd"/><rect x="5" y="10" width="20" height="4" fill="#10b981"/><rect x="10" y="16" width="4" height="8" fill="#dbeafe"/><rect x="17" y="16" width="5" height="4" fill="#ffffff"/><rect x="8" y="24" width="17" height="3" fill="#64748b"/>'
+      };
+      return icons[icon] || icons.web;
+    }
+
+    function renderProjectFilters() {
+      const categories = ["Alle", ...new Set(siteData.projects.map((project) => project.category))];
+      filterBar.innerHTML = categories.map((category) => (
+        `<button class="filter-button ${category === "Alle" ? "is-active" : ""}" type="button" data-filter="${category}">${category}</button>`
+      )).join("");
+    }
+
+    function renderProjects(filter = "Alle") {
+      const projects = filter === "Alle"
+        ? siteData.projects
+        : siteData.projects.filter((project) => project.category === filter);
+
+      projectGrid.innerHTML = projects.map((project) => {
+        const isExternal = project.link.startsWith("http");
+        return `
+          <article class="card project-card">
+            <div>
+              <div class="project-pixel-hero" aria-hidden="true">
+                <svg viewBox="0 0 32 32">${iconForProject(project.icon)}</svg>
+              </div>
+              <p class="meta">${project.category}</p>
+              <h3 style="margin-top: 8px;">${project.title}</h3>
+              <p style="margin-top: 10px;">${project.description}</p>
+            </div>
+            <div class="stack" style="gap: 16px;">
+              <div class="pill-row">
+                ${project.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
+              </div>
+              <a href="${project.link}" ${isExternal ? 'target="_blank" rel="noreferrer"' : ""}>${project.cta}</a>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function textFromHtml(html) {
+      const doc = new DOMParser().parseFromString(html || "", "text/html");
+      return doc.body.textContent.replace(/\s+/g, " ").trim();
+    }
+
+    function truncateText(value, maxLength = 165) {
+      if (!value || value.length <= maxLength) return value || "";
+      return `${value.slice(0, maxLength).trim()}...`;
+    }
+
+    function formatPostDate(value) {
+      try {
+        return new Intl.DateTimeFormat("nl-NL", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric"
+        }).format(new Date(value));
+      } catch {
+        return "";
+      }
+    }
+
+    function normalizeFeedBase(value) {
+      if (!value) return "";
+      const withProtocol = /^https?:\/\//i.test(value) ? value : `https://${value}`;
+      return withProtocol.replace(/\/+$/, "");
+    }
+
+    function firstImageFromPost(post) {
+      if (post.thumbnail) return post.thumbnail;
+      const doc = new DOMParser().parseFromString(post.content || post.description || "", "text/html");
+      return doc.querySelector("img")?.getAttribute("src") || "";
+    }
+
+    function renderFeedState(container, message, linkLabel = "Open Substack") {
+      const state = document.createElement("div");
+      state.className = "substack-state";
+
+      const text = document.createElement("p");
+      text.textContent = message;
+      state.appendChild(text);
+
+      const link = document.createElement("a");
+      link.href = "https://marcren1.substack.com/";
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      link.textContent = linkLabel;
+      link.style.display = "inline-block";
+      link.style.marginTop = "10px";
+      state.appendChild(link);
+
+      container.replaceChildren(state);
+    }
+
+    function renderSubstackCard(post) {
+      const link = document.createElement("a");
+      link.className = "substack-card";
+      link.href = post.link || "https://marcren1.substack.com/";
+      link.target = "_blank";
+      link.rel = "noreferrer";
+
+      const card = document.createElement("article");
+      card.className = "card substack-post";
+
+      const imageUrl = firstImageFromPost(post);
+      if (imageUrl) {
+        const image = document.createElement("img");
+        image.className = "substack-thumbnail";
+        image.src = imageUrl;
+        image.alt = post.title || "Substack artikel";
+        image.loading = "lazy";
+        card.appendChild(image);
+      } else {
+        const placeholder = document.createElement("div");
+        placeholder.className = "substack-thumbnail-placeholder";
+        placeholder.textContent = "Blog";
+        card.appendChild(placeholder);
+      }
+
+      const body = document.createElement("div");
+      body.className = "substack-body";
+
+      const title = document.createElement("h3");
+      title.className = "substack-title";
+      title.textContent = post.title || "Nieuw artikel";
+      body.appendChild(title);
+
+      if (post.pubDate) {
+        const date = document.createElement("p");
+        date.className = "substack-date meta";
+        date.textContent = formatPostDate(post.pubDate);
+        body.appendChild(date);
+      }
+
+      const description = document.createElement("p");
+      description.className = "substack-desc";
+      description.textContent = truncateText(textFromHtml(post.description || post.content));
+      body.appendChild(description);
+
+      card.appendChild(body);
+      link.appendChild(card);
+      return link;
+    }
+
+    async function loadSubstackFeed() {
+      const container = document.querySelector("#substack-feed");
+      if (!container) return;
+
+      const feedBase = normalizeFeedBase(container.dataset.substackUrl);
+      const posts = Math.max(1, parseInt(container.dataset.posts, 10) || 3);
+      if (!feedBase) {
+        renderFeedState(container, "Geen Substack-url gevonden.");
+        return;
+      }
+
+      const rssUrl = `${feedBase}/feed`;
+      const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+      try {
+        const controller = new AbortController();
+        const timeout = window.setTimeout(() => controller.abort(), 12000);
+        const response = await fetch(apiUrl, { signal: controller.signal });
+        window.clearTimeout(timeout);
+
+        if (!response.ok) throw new Error(`RSS response ${response.status}`);
+        const data = await response.json();
+        if (data.status !== "ok" || !Array.isArray(data.items)) {
+          throw new Error(data.message || "RSS feed kon niet worden gelezen");
+        }
+
+        const feedItems = data.items.slice(0, posts);
+        if (!feedItems.length) {
+          renderFeedState(container, "Er staan nog geen artikelen in deze feed.");
+          return;
+        }
+
+        container.replaceChildren(...feedItems.map(renderSubstackCard));
+      } catch (error) {
+        console.error("Substack feed error:", error);
+        renderFeedState(container, "De live feed kon niet geladen worden. Je kunt de artikelen direct op Substack lezen.");
+      }
+    }
+
+    function setActivePage() {
+      const routeAliases = { substack: "blog" };
+      const rawRequested = window.location.hash.replace("#", "") || "home";
+      const requested = routeAliases[rawRequested] || rawRequested;
+      const exists = pages.some((page) => page.dataset.page === requested);
+      const active = exists ? requested : "home";
+
+      pages.forEach((page) => {
+        page.classList.toggle("is-active", page.dataset.page === active);
+      });
+
+      navLinks.forEach((link) => {
+        const isCurrent = link.getAttribute("href") === `#${active}`;
+        if (isCurrent) {
+          link.setAttribute("aria-current", "page");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+
+      document.title = pageTitles[active];
+      window.scrollTo({ top: 0, behavior: "auto" });
+      requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
+    }
+
+    filterBar.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-filter]");
+      if (!button) return;
+      filterBar.querySelectorAll(".filter-button").forEach((item) => item.classList.remove("is-active"));
+      button.classList.add("is-active");
+      renderProjects(button.dataset.filter);
+    });
+
+    window.addEventListener("hashchange", setActivePage);
+    year.textContent = new Date().getFullYear();
+    renderProjectFilters();
+    renderProjects();
+    loadSubstackFeed();
+    setActivePage();
+  </script>
+</body>
+</html>
