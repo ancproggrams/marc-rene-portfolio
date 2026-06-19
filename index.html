@@ -448,6 +448,12 @@
       object-fit: cover;
       image-rendering: auto;
     }
+    .pixel-hero-title picture,
+    .profile-tile picture {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
     .hero-cta { display: flex; gap: var(--gap-sm); flex-wrap: wrap; margin-top: var(--gap-sm); }
 
     .studio-board {
@@ -572,6 +578,14 @@
       object-fit: contain;
       mix-blend-mode: multiply;
       filter: contrast(1.14);
+    }
+    .visual-tile-art-wrap {
+      width: 100%;
+      height: 98px;
+      display: block;
+    }
+    .visual-tile-art-wrap .visual-tile-art {
+      height: 100%;
     }
     .visual-tile strong {
       font-family: var(--font-display);
@@ -1058,15 +1072,18 @@
             <p class="eyebrow">8-bit corporate portfolio</p>
             <h1 class="sr-only">Marc René</h1>
             <div class="pixel-hero-title">
-              <img
-                class="pixel-header-image"
-                src="assets/marc-rene-8bit-header.png"
-                alt="8-bit isometrische header met de naam Marc René"
-                width="1672"
-                height="941"
-                fetchpriority="high"
-                decoding="async"
-              />
+              <picture>
+                <source srcset="assets/marc-rene-8bit-header.webp" type="image/webp" />
+                <img
+                  class="pixel-header-image"
+                  src="assets/marc-rene-8bit-header.png"
+                  alt="8-bit isometrische header met de naam Marc René"
+                  width="1672"
+                  height="941"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <p class="lead">
               Ik werk graag waar business, IT en uitvoering elkaar raken:
@@ -1086,7 +1103,10 @@
             </div>
             <div class="portrait-collage">
               <a class="visual-tile profile-tile" href="#cv" aria-label="Open de CV-pagina">
-                <img src="assets/marc-rene-profile.png" alt="Portretfoto van Marc René" width="512" height="512" />
+                <picture>
+                  <source srcset="assets/marc-rene-profile.webp" type="image/webp" />
+                  <img src="assets/marc-rene-profile.png" alt="Portretfoto van Marc René" width="512" height="512" />
+                </picture>
                 <div class="profile-caption">
                   <span>LEVEL 01 · PROFILE</span>
                   <strong>Marc René</strong>
@@ -1121,15 +1141,18 @@
               </a>
               <a class="visual-tile tile-peach" href="#spotify" aria-label="Open de Spotify-pagina">
                 <span>LEVEL 04 · SOUND</span>
-                <img
-                  class="visual-tile-art"
-                  src="assets/marcsmusic-waveform.png"
-                  alt=""
-                  width="1536"
-                  height="1024"
-                  loading="lazy"
-                  decoding="async"
-                />
+                <picture class="visual-tile-art-wrap">
+                  <source srcset="assets/marcsmusic-waveform.webp" type="image/webp" />
+                  <img
+                    class="visual-tile-art"
+                    src="assets/marcsmusic-waveform.png"
+                    alt=""
+                    width="1536"
+                    height="1024"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
                 <strong class="music-title">marcsmusic</strong>
               </a>
             </div>
@@ -1546,7 +1569,7 @@
               <p class="contact-row"><svg class="pixel-icon" aria-hidden="true"><use href="#px-linkedin"/></svg><span>LinkedIn: <a href="https://www.linkedin.com/in/marcrene/" target="_blank" rel="noreferrer">linkedin.com/in/marcrene</a></span></p>
               <p class="contact-row"><svg class="pixel-icon" aria-hidden="true"><use href="#px-speech"/></svg><span>Blog: <a href="https://marcren1.substack.com/" target="_blank" rel="noreferrer">marcren1.substack.com</a></span></p>
             </div>
-            <form class="card stack" action="mailto:marc@adviesnconsultancy.nl" method="post" enctype="text/plain">
+            <form class="card stack" data-contact-form>
               <h2>Stuur mij een bericht</h2>
               <div class="field">
                 <label for="name">Naam</label>
@@ -1625,6 +1648,7 @@
     const navLinks = Array.from(document.querySelectorAll(".nav-links a"));
     const pages = Array.from(document.querySelectorAll("[data-page]"));
     const year = document.querySelector("#year");
+    const contactForm = document.querySelector("[data-contact-form]");
 
     function iconForProject(icon) {
       const icons = {
@@ -1844,6 +1868,21 @@
       filterBar.querySelectorAll(".filter-button").forEach((item) => item.classList.remove("is-active"));
       button.classList.add("is-active");
       renderProjects(button.dataset.filter);
+    });
+
+    contactForm?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(contactForm);
+      const name = String(formData.get("name") || "").trim();
+      const email = String(formData.get("email") || "").trim();
+      const message = String(formData.get("message") || "").trim();
+      const subject = encodeURIComponent(`Bericht via portfolio${name ? ` van ${name}` : ""}`);
+      const body = encodeURIComponent([
+        name ? `Naam: ${name}` : "",
+        email ? `E-mail: ${email}` : "",
+        message ? `Bericht:\n${message}` : ""
+      ].filter(Boolean).join("\n\n"));
+      window.location.href = `mailto:marc@adviesnconsultancy.nl?subject=${subject}&body=${body}`;
     });
 
     window.addEventListener("hashchange", setActivePage);
