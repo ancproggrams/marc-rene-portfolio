@@ -32,8 +32,9 @@
       --pastel-lilac: #ece7ff;
       --pastel-peach: #ffe4d6;
       --pastel-yellow: #fef3c7;
-      --nav-bright: #22d3ee;
-      --nav-soft: #ecfeff;
+      --nintendo-red: #e60012;
+      --nintendo-red-dark: #99000c;
+      --nintendo-red-soft: #ffe5e8;
       --shadow: #b8c2d5;
       --focus: #2563eb;
 
@@ -212,8 +213,10 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      background: var(--nav-soft);
-      border-bottom: 1px solid var(--border);
+      background: var(--nintendo-red);
+      border-bottom: 1px solid var(--nintendo-red-dark);
+      color: var(--surface);
+      box-shadow: 0 2px 0 var(--nintendo-red-dark);
     }
     .topnav-inner {
       min-height: 68px;
@@ -230,18 +233,20 @@
       font-size: 20px;
       font-weight: 800;
       white-space: nowrap;
+      color: var(--surface);
     }
     .logo-mark {
       width: 30px;
       height: 30px;
       display: grid;
       place-items: center;
-      border: 1px solid var(--border);
+      border: 1px solid var(--surface);
       border-radius: var(--radius);
-      background: var(--nav-bright);
+      background: var(--surface);
+      color: var(--nintendo-red);
       font-family: var(--font-mono);
       font-size: 12px;
-      box-shadow: 3px 3px 0 var(--shadow);
+      box-shadow: 3px 3px 0 var(--nintendo-red-dark);
     }
     .nav-links {
       display: flex;
@@ -252,7 +257,6 @@
       max-width: 100%;
     }
     .nav-links a {
-      --nav-cut: 11px;
       position: relative;
       isolation: isolate;
       min-height: 44px;
@@ -264,7 +268,7 @@
       font-weight: 750;
       line-height: 1;
       border: 0;
-      border-radius: 0;
+      border-radius: 4px;
       padding: 0 18px;
       transition: color 0.16s ease, transform 0.12s ease;
     }
@@ -273,29 +277,22 @@
       content: "";
       position: absolute;
       pointer-events: none;
-      clip-path: polygon(
-        var(--nav-cut) 0,
-        calc(100% - var(--nav-cut)) 0,
-        100% 50%,
-        calc(100% - var(--nav-cut)) 100%,
-        var(--nav-cut) 100%,
-        0 50%
-      );
+      border-radius: 4px;
       transition: background 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
     }
     .nav-links a::before {
       inset: 0;
       z-index: -2;
       background: var(--fg);
-      filter: drop-shadow(4px 4px 0 var(--shadow));
+      filter: drop-shadow(4px 4px 0 var(--nintendo-red-dark));
     }
     .nav-links a::after {
       inset: 3px;
       z-index: -1;
       background: var(--surface);
       box-shadow:
-        inset 0 0 0 2px color-mix(in oklch, var(--accent) 30%, var(--border)),
-        inset 0 -4px 0 color-mix(in oklch, var(--pastel-blue) 70%, var(--border));
+        inset 0 0 0 2px color-mix(in oklch, var(--nintendo-red) 28%, var(--border)),
+        inset 0 -4px 0 var(--nintendo-red-soft);
     }
     .nav-links a:hover,
     .nav-links a:focus-visible,
@@ -305,22 +302,25 @@
     }
     .nav-links a:hover::after,
     .nav-links a:focus-visible::after {
-      background: color-mix(in oklch, var(--nav-bright) 22%, var(--surface));
+      background: var(--nintendo-red-soft);
       box-shadow:
-        inset 0 0 0 2px var(--accent),
-        inset 0 -4px 0 color-mix(in oklch, var(--nav-bright) 44%, var(--border));
+        inset 0 0 0 2px var(--nintendo-red),
+        inset 0 -4px 0 color-mix(in oklch, var(--nintendo-red) 20%, var(--surface));
+    }
+    .nav-links a[aria-current="page"] {
+      color: var(--surface);
     }
     .nav-links a[aria-current="page"]::after {
-      background: var(--nav-bright);
+      background: var(--nintendo-red-dark);
       box-shadow:
-        inset 0 0 0 2px color-mix(in oklch, var(--fg) 78%, var(--accent)),
-        inset 0 -4px 0 color-mix(in oklch, var(--accent) 42%, var(--nav-bright));
+        inset 0 0 0 2px var(--surface),
+        inset 0 -4px 0 color-mix(in oklch, var(--fg) 42%, var(--nintendo-red-dark));
     }
     .nav-links a:active {
       transform: translate(2px, 2px);
     }
     .nav-links a:active::before {
-      filter: drop-shadow(1px 1px 0 var(--shadow));
+      filter: drop-shadow(1px 1px 0 var(--nintendo-red-dark));
     }
 
     .btn {
@@ -958,7 +958,7 @@
 
     @media (max-width: 620px) {
       .nav-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-      .nav-links a { width: 100%; --nav-cut: 9px; padding-inline: 10px; font-size: 13px; }
+      .nav-links a { width: 100%; padding-inline: 10px; font-size: 13px; }
       .hero-copy h1 { max-width: none; }
       .pixel-hero-title { width: 100%; margin-block: 0 4px; }
       .portrait-collage {
@@ -1058,7 +1058,6 @@
         </div>
         <div class="container hero-split">
           <div class="hero-copy">
-            <p class="eyebrow">8-bit corporate portfolio</p>
             <h1 class="sr-only">Marc René</h1>
             <div class="pixel-hero-title">
               <picture>
