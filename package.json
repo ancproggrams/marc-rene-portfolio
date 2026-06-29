@@ -6,13 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "check": "node --check server.js",
-    "growth:dev": "npm --prefix soundcloud-growth-os run dev",
-    "growth:build": "npm --prefix soundcloud-growth-os run build",
-    "growth:typecheck": "npm --prefix soundcloud-growth-os run typecheck",
-    "growth:test": "npm --prefix soundcloud-growth-os run test",
-    "growth:daily-snapshot": "npm --prefix soundcloud-growth-os run job:daily-snapshot",
-    "growth:weekly-report": "npm --prefix soundcloud-growth-os run job:weekly-report"
+    "check": "node --check server.js"
   },
   "engines": {
     "node": ">=18"

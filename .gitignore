@@ -16,7 +16,6 @@ build/
 .cache/
 .parcel-cache/
 .vite/
-soundcloud-growth-os/reports/*.md
 
 *.log
 *.tmp
