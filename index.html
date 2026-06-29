@@ -905,6 +905,42 @@
       color: var(--muted);
       line-height: 1.75;
     }
+    .soundcloud-playlists {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--gap-lg);
+      margin-top: var(--gap-xl);
+    }
+    .soundcloud-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--gap-md);
+      min-height: 260px;
+    }
+    .soundcloud-card p { color: var(--muted); }
+    .soundcloud-track-list {
+      display: grid;
+      gap: 8px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .soundcloud-track-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .soundcloud-track-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      flex: 0 0 auto;
+      background: var(--accent);
+      box-shadow: 4px 4px 0 var(--shadow);
+    }
 
     .contact-card a {
       color: var(--accent);
@@ -947,6 +983,7 @@
       .grid-4,
       .grid-2-1,
       .grid-1-2,
+      .soundcloud-playlists,
       .substack-post {
         grid-template-columns: 1fr;
       }
@@ -1043,6 +1080,7 @@
         <a href="#projecten">Projecten</a>
         <a href="#hobbys">Hobby's</a>
         <a href="#blog">Blog</a>
+        <a href="#spotify">Muziek</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -1361,6 +1399,7 @@
               </div>
             </aside>
           </div>
+
         </div>
       </div>
     </section>
@@ -1540,6 +1579,43 @@
               </div>
             </aside>
           </div>
+
+          <div class="soundcloud-playlists" aria-label="SoundCloud playlists van Marc René">
+            <article class="card soundcloud-card">
+              <div class="stack" style="gap: 14px;">
+                <p class="eyebrow">SoundCloud playlist</p>
+                <h2>Dutch Songs</h2>
+                <p>
+                  Nederlandstalige pop/reggae met emotie, veerkracht en directe
+                  verhalen. Start hier voor de tracks met de meeste tekst en
+                  gevoel.
+                </p>
+                <ul class="soundcloud-track-list">
+                  <li>Geen Afscheid</li>
+                  <li>Door de Storm</li>
+                  <li>Strijd</li>
+                </ul>
+              </div>
+              <a class="btn btn-primary" href="https://soundcloud.com/marcsmusic-557850401/sets/dutch-songs" target="_blank" rel="noreferrer">Luister op SoundCloud</a>
+            </article>
+            <article class="card soundcloud-card">
+              <div class="stack" style="gap: 14px;">
+                <p class="eyebrow">SoundCloud playlist</p>
+                <h2>Electronic Summer</h2>
+                <p>
+                  Zomerse electronic, dance en festivalenergie. Een compacte
+                  ingang voor tracks die sneller, lichter en meer clubgericht
+                  voelen.
+                </p>
+                <ul class="soundcloud-track-list">
+                  <li>Carnival</li>
+                  <li>Summer Time</li>
+                  <li>Weekend Mode</li>
+                </ul>
+              </div>
+              <a class="btn btn-primary" href="https://soundcloud.com/marcsmusic-557850401/sets/electronic-summer" target="_blank" rel="noreferrer">Luister op SoundCloud</a>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -1636,7 +1712,7 @@
       projecten: "Projecten · Marc René",
       hobbys: "Hobby's · Marc René",
       blog: "Blog · Marc René",
-      spotify: "Spotify · Marc René",
+      spotify: "Muziek · Marc René",
       contact: "Contact · Marc René"
     };
 

@@ -12,13 +12,17 @@ pnpm-debug.log*
 coverage/
 dist/
 build/
+.next/
 .cache/
 .parcel-cache/
 .vite/
+soundcloud-growth-os/reports/*.md
 
 *.log
 *.tmp
 *.temp
+*.tsbuildinfo
 
 screenshots/
 tmp/
+.playwright-mcp/
